@@ -1,5 +1,7 @@
 # 不跑打印店 PDFMark
 
+**中文** | [English](#english)
+
 一个简单、清亮的原生 macOS PDF 标注工具：打开 PDF，随手添加文字和图片，导出新文件。
 不用跑打印店，也不用忍受臃肿的 PDF 套件。
 
@@ -55,6 +57,74 @@ xcode-select --install   # 如果还没装过
 - SwiftUI + PDFKit
 - Swift Package Manager 构建，零第三方依赖
 - 导出基于 CGPDFContext 逐页压平渲染，文字层保留（可搜索）
+
+## License
+
+[MIT](LICENSE)
+
+---
+
+<a id="english"></a>
+
+# PDFMark (不跑打印店)
+
+[中文](#不跑打印店-pdfmark) | **English**
+
+A simple, clean native macOS PDF annotation tool: open a PDF, drop in text and images, export a new file.
+No print shop, no bloated PDF suite required.
+
+<p align="center">
+  <img src="docs/app-icon.png" width="160" alt="PDFMark icon">
+</p>
+
+## Features
+
+- Open any PDF: pick a file, or just drag it into the window
+- Multi-page support: page thumbnails in the sidebar, click to jump
+- Text annotations: double-click to edit, adjustable font size and color
+- Image annotations: insert PNG / JPG / HEIC and other common formats
+- Free canvas: drag annotations anywhere; images resize proportionally
+- Export: flatten annotations into a new PDF — **all pages** or a **custom range** (e.g. `1-3, 5, 8`)
+- Exported PDFs keep text searchable and copyable, with page sizes identical to the original
+
+## Requirements
+
+- macOS 14 (Sonoma) or later
+- Apple Silicon (M-series) Mac
+
+## Installation
+
+1. Download `不跑打印店.dmg` from the [Releases](../../releases) page
+2. Open the dmg and drag the app into the Applications folder
+3. If Gatekeeper blocks the first launch (the app is ad-hoc signed, not notarized):
+   - Right-click the app → **Open** → **Open**; or
+   - Run in Terminal: `xattr -dr com.apple.quarantine /Applications/不跑打印店.app`
+
+## Usage
+
+1. Open a PDF
+2. Click **文字** (Text) or **图片** (Image) in the toolbar to add an annotation on the current page, then drag it into place
+3. Double-click a text box to edit; select it to adjust font size and color in the toolbar
+4. Select an annotation and press `⌫` to delete it
+5. Click **导出** (Export), choose all pages or enter a page range, and save as a new PDF
+
+## Build from Source
+
+Xcode is **not** required — only the Xcode Command Line Tools:
+
+```bash
+xcode-select --install   # if not already installed
+
+./build_app.sh           # build and package 不跑打印店.app
+./make_dmg.sh            # create the dmg installer
+./make_icon.sh           # (optional) regenerate the icon after editing tools/IconGenerator.swift
+```
+
+## Tech
+
+- SwiftUI + PDFKit
+- Built with Swift Package Manager, zero third-party dependencies
+- Export flattens each page via CGPDFContext while preserving the text layer (searchable)
 
 ## License
 
